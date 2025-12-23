@@ -96,20 +96,45 @@ You can view the full **Entity Relationship Diagram (ERD)** here:
 
 ## 🛠 SQL Queries
 
-### Query 1: JOIN
-
-Retrieve booking information along with customer and vehicle names.
-
 ```sql
+-- Query 1: JOIN
+-- Retrieve booking information along with customer and vehicle names.
 SELECT
-    b.id AS booking_id,
-    u.name AS customer_name,
-    v.name AS vehicle_name,
-    b.start_date,
-    b.end_date,
-    b.status,
-    b.total_cost
-FROM Bookings b
-INNER JOIN Users u ON b.user_id = u.id
-INNER JOIN Vehicles v ON b.vehicle_id = v.id;
+  b.id AS booking_id,
+  users.name AS customer_name,
+  vehicles.name AS vehicle_name,
+  b.start_date,
+  b.end_date,
+  b.status
+FROM bookings AS b
+INNER JOIN users ON b.user_id = users.id
+INNER JOIN vehicles ON b.vehicle_id = vehicles.id;
+
+-- Query 2: EXISTS
+-- Find all vehicles that have never been booked.
+SELECT *
+FROM vehicles
+WHERE NOT EXISTS (
+    SELECT id
+    FROM bookings
+    WHERE bookings.vehicle_id = vehicles.id
+);
+
+-- Query 3: WHERE
+-- Retrieve all available vehicles of a specific type (e.g., cars).
+SELECT *
+FROM vehicles
+WHERE type = 'car' AND status = 'available';
+
+-- Query 4: GROUP BY & HAVING
+-- Find the total number of bookings for each vehicle and display only those vehicles with more than 2 bookings.
+SELECT
+    vehicles.name AS vehicle_name,
+    COUNT(bookings.id) AS total_bookings
+FROM bookings
+INNER JOIN vehicles
+    ON bookings.vehicle_id = vehicles.id
+GROUP BY vehicles.name
+HAVING COUNT(bookings.id) > 2;
+
 ```
