@@ -27,9 +27,6 @@ This project is perfect for learning database design and query optimization in a
    - [Bookings Table](#3-bookings)
 2. [Relationships](#relationships)
 3. [SQL Queries](#sql-queries)
-4. [Submission Requirements](#submission-requirements)
-5. [Author](#author)
-6. [Notes](#notes)
 
 ---
 
@@ -88,7 +85,12 @@ Stores details of vehicle bookings made by users.
 - **Many-to-One:** Multiple bookings can refer to the same vehicle.
 - **One-to-One (Logical):** Each booking is linked to exactly one user and one vehicle.
 
-> 💡 **Tip:** Ensure your ERD highlights **PKs, FKs, cardinality, and status fields** clearly.
+---
+
+## 🌐 ERD Link
+
+You can view the full **Entity Relationship Diagram (ERD)** here:  
+[Vehicle Rental System ERD](https://drawsql.app/teams/sajjad-5/diagrams/vehicle-rental-system)
 
 ---
 
