@@ -42,7 +42,7 @@ Stores system users including **Admin** and **Customer** roles.
 | `role`      | VARCHAR   | NOT NULL (Admin/Customer) |
 | `name`      | VARCHAR   | NOT NULL                  |
 | `email`     | VARCHAR   | UNIQUE, NOT NULL          |
-| `password`  | VARCHAR   | NOT NULL                  |
+| `password`  | VARCHAR   |                           |
 | `phone`     | VARCHAR   | NULLABLE                  |
 
 ---
