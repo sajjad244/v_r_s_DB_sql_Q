@@ -41,3 +41,7 @@ INNER JOIN vehicles
 GROUP BY vehicles.name
 HAVING COUNT(bookings.id) > 2;
 
+
+
+
+
